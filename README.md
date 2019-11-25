@@ -143,7 +143,7 @@ To make the flow generic, we have defined one variable called "baseurl" which wi
 ![alt text](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/HDF-variable-declaration.JPG "Variable declaration")
 
 You also need to make adjustments to your database provider, database url and username & password. 
-You can find the example flow here: [a link](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/HDFS-NN-Monitoring.xml)
+You can find the example flow here: [Sample NiFi Flow](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/HDFS-NN-Monitoring.xml)
 
 Using Superset, you can connect it to a relational database, and build various chart types to represent your data. One such chart type is the "Sunburst", which allows you to easily and visually navigate your disk consumption. Here is an example: 
 ![alt text](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/Superset-HDFS-NN-disk-consumption.JPG "Superset Sunburst")
