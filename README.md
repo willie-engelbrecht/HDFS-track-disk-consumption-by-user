@@ -5,7 +5,7 @@ It can often times be hard to track the disk consumption per user on your HDFS f
 
 This article attemps to solve both problems. Using a NiFi flow to recursively pull the status of each file stored on HDFS, and storing that in a database for visualising through Superset and/or Grafana. 
 
-You can run REST queries against the HDFS active namenode, and get a listing of all the files and directories at a specific location. Here is an example of query the Namenode for '/user/willie':
+You can run REST queries against the HDFS active namenode, and get a listing of all the files and directories at a specific location. Here is an example of query against the Namenode for '/user/willie':
 ```
 curl -s 'http://localhost:50070/webhdfs/v1/user/willie/?op=liststatus' | python -m json.tool
 {
