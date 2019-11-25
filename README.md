@@ -153,5 +153,5 @@ There's also a video to show a live visualisation [which you can download to wat
 You can also use Grafana to display the same data, but in a more timeseries way. By using a timeseries display, you can see the growth of disk consumption over a time period in order to make a prediction when a user will cross some threshold. This aids in monitoring and capacity planning. You can also setup Grafana to display and send alerts when thresholds are crossed. An example of a Grafana dashboard: 
 ![alt text](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/Grafana-HDFS-NN-disk-consumption.JPG "Grafana Dashboard")
 
-You can also download a sample dashoard for your Grafana and import it for easy setup: 
-![alt text](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/Grafana_dashboard.json "Grafana Dashboard example JSON")
+You can also download a [sample Grafana dashboard](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/Grafana_dashboard.json) and import it for easy setup.
+
