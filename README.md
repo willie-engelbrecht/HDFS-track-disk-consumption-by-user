@@ -149,6 +149,7 @@ Using Superset, you can connect it to a relational database, and build various c
 ![alt text](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/Superset-HDFS-NN-disk-consumption.JPG "Superset Sunburst")
 
 There's also a video to show a live visualisation: 
+[![Superset Sunburst video]](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/sunburst-compressed.mp4)
 ![alt text](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/sunburst-compressed.mp4 "Superset Sunburst video")
 
 You can also use Grafana to display the same data, but in a more timeseries way. By using a timeseries display, you can see the growth of disk consumption over a time period in order to make a prediction when a user will cross some threshold. This aids in monitoring and capacity planning. You can also setup Grafana to display and send alerts when thresholds are crossed. An example of a Grafana dashboard: 
