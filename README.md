@@ -148,7 +148,8 @@ You can find the example flow here: [Sample NiFi Flow](https://github.com/willie
 Using Superset, you can connect it to a relational database, and build various chart types to represent your data. One such chart type is the "Sunburst", which allows you to easily and visually navigate your disk consumption. Here is an example: 
 ![alt text](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/Superset-HDFS-NN-disk-consumption.JPG "Superset Sunburst")
 
-There's also a video to show a live visualisation: 
+There's also a video to show a live visualisation [which you can download to watch](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/sunburst-compressed.mp4)
+
 [![Superset Sunburst video](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/Superset-HDFS-NN-disk-consumption.JPG)](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/sunburst-compressed.mp4)
 
 [![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/vt5fpE0bzSY)
