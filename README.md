@@ -1,5 +1,5 @@
-# HDFS-track-disk-consumption-by-user
-Apache NiFi flow to recursively call the HDFS Namenode WebHDFS API to track disk consumption per user across the cluster
+# HDFS: Track disk consumption by user
+Apache NiFi flow to recursively call the HDFS Namenode WebHDFS API to track disk consumption per user across the cluster for graphing, monitoring, capacity planning and alerting.
 
 It can often times be hard to track the disk consumption per user on your HDFS filesystem. There isn't really a single command to tell you how much disk space a specific user is using across the filesystem (over many directories), nor can you easily track this over time to predict future consumption. 
 
