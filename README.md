@@ -78,13 +78,17 @@ curl -s 'http://localhost:50070/webhdfs/v1/user/willie/?op=liststatus' | python 
 
 This is very well documented at: https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#List_a_Directory
 
-There are two types of outputs in the same JSON result, type=FILE and type=DIRECTORY. If type=FILE, then an attribute called length will tell us the filesize, and we know the path this file belongs to, as well as the owner of the file. With this we have enough information to store in a database, and over time we can track the consumption of all the files owned by a specific user. 
+There are two types of outputs in the sample JSON result, type=FILE and type=DIRECTORY. If type=FILE, then an attribute called length will tell us the filesize, and we know the path this file belongs to, as well as the owner of the file. With this we have enough information to store in a database, and over time we can track the consumption of all the files owned by a specific user. 
 
-Unfortunately the liststatus API call will only return the results for a specific location. If we want to query a subdirectory (like say /user/willie/dir1), we have to issue another REST API call, and so on for each directory on the filesystem. This means many API calls, recursively down each patch until you reach the end. 
+Unfortunately the liststatus API call will only return the results for a specific location. If we want to query a subdirectory (like say /user/willie/dir1), we have to issue another REST API call, and so on for each directory on the filesystem. This means many API calls, recursively down each path until you reach the end. 
 
 Provided in this article is an example NiFi flow which does exactly that. It will recursively query the Namenode API through each directory path, and grab a listing of all the files, owners, file size and store in a relational database (MySQL in this example). It will construct a JSON string for each file, and by merging all the JSON strings together as a NiFi record, we can do very large bulk inserts into the database. 
 
+![alt text](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/HDF-looping.JPG "Looping NiFi flow")
+
 An example of a JSON string will look like this, and we merge thousands of them together in bulk:
+![alt text](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/HDF-record-processing.JPG "Merging JSON records")
+
 ```
 {
   "_owner" : "nifi",
@@ -135,12 +139,20 @@ CREATE TABLE filestats (
 CREATE INDEX idx_filestats_owner_length on filestats(_owner,length);
 ```
 
-To make the flow generic, we have defined one variable called "baseurl" which will be the URL of your Name Node. 
+To make the flow generic, we have defined one variable called "baseurl" which will be the URL of your Name Node:
+![alt text](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/HDF-variable-declaration.JPG "Variable declaration")
+
 You also need to make adjustments to your database provider, database url and username & password. 
-You can find the example flow here: <github url>
+You can find the example flow here: ![alt text](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/HDFS-NN-Monitoring.xml "Sample NiFi flow")
 
 Using Superset, you can connect it to a relational database, and build various chart types to represent your data. One such chart type is the "Sunburst", which allows you to easily and visually navigate your disk consumption. Here is an example: 
+![alt text](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/Superset-HDFS-NN-disk-consumption.JPG "Superset Sunburst")
+
+There's also a video to show a live visualisation: 
+![alt text](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/sunburst-compressed.mp4 "Superset Sunburst video")
 
 You can also use Grafana to display the same data, but in a more timeseries way. By using a timeseries display, you can see the growth of disk consumption over a time period in order to make a prediction when a user will cross some threshold. This aids in monitoring and capacity planning. You can also setup Grafana to display and send alerts when thresholds are crossed. An example of a Grafana dashboard: 
+![alt text](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/Grafana-HDFS-NN-disk-consumption.JPG "Grafana Dashboard")
 
 You can also download a sample dashoard for your Grafana and import it for easy setup: 
+![alt text](https://github.com/willie-engelbrecht/HDFS-track-disk-consumption-by-user/blob/master/Grafana_dashboard.json "Grafana Dashboard example JSON")
