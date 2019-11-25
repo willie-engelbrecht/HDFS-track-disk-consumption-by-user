@@ -3,7 +3,7 @@ Apache NiFi flow to recursively call the HDFS Namenode WebHDFS API to track disk
 
 It can often times be hard to track the disk consumption per user on your HDFS filesystem. There isn't really a single command to tell you how much disk space a specific user is using across the filesystem (over many directories), nor can you easily track this over time to predict future consumption. 
 
-This article attemps to solve both problems. Using a NiFi flow to recursively pull the status of each file stored on HDFS, and storing that in a database for visualising through Superset and/or Grafana. 
+This article attempts to solve both problems. Using a NiFi flow to recursively pull the status of each file stored on HDFS, and storing that in a database for visualising through Superset and/or Grafana. 
 
 You can run REST queries against the HDFS active namenode, and get a listing of all the files and directories at a specific location. Here is an example of query against the Namenode for '/user/willie':
 ```
